@@ -1,4 +1,4 @@
-package com.example.etfood
+package com.example.etfood.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import com.example.etfood.databinding.ActivityLoginBinding
-import com.example.etfood.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.noAccountTv.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
         binding.loginBtn.setOnClickListener {
@@ -44,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.forgotTv.setOnClickListener {
-            startActivity(Intent(this,ForgotPasswordActivity::class.java))
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
     }
 
@@ -94,11 +92,11 @@ class LoginActivity : AppCompatActivity() {
 
                     val userType = snapshot.child("userType").value
                     if(userType == "user"){
-                        startActivity(Intent(this@LoginActivity,DashboardUserActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
                         finish()
                     }
                     else if (userType == "admin"){
-                        startActivity(Intent(this@LoginActivity,DashboardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
                         finish()
                     }
                 }

@@ -1,4 +1,4 @@
-package com.example.etfood
+package com.example.etfood.ui.activity
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,6 @@ import android.util.Patterns
 import android.widget.Toast
 import com.example.etfood.databinding.ActivityForgotPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class ForgotPasswordActivity : AppCompatActivity() {
 

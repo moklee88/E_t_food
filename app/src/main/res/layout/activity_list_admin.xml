@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListAdminActivity">
+    android:background="@drawable/background"
+    tools:context=".ui.activity.ListAdminActivity">
     
     <RelativeLayout
         android:id="@+id/toolbarRl"
@@ -47,7 +48,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foodsRv"
         android:layout_width="match_parent"
-        android:background="@drawable/background"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbarRl"
         android:layout_marginStart="10dp"

@@ -1,18 +1,17 @@
-package com.example.etfood
+package com.example.etfood.ui.adapter
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.etfood.databinding.RowAdminBinding
+import com.example.etfood.ui.model.ModelFood
 import com.google.firebase.database.FirebaseDatabase
 
 
-class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>, Filterable{
+class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>{
     private var context: Context
 
     public var foodArrayList: ArrayList<ModelFood>
@@ -20,7 +19,6 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>, Filte
 
     private lateinit var binding: RowAdminBinding
 
-    var filter : FilterFood? = null
 
     constructor(context: Context, foodArrayList: ArrayList<ModelFood>) :super(){
         this.context = context
@@ -44,23 +42,6 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>, Filte
         holder.foodName.text = title
         holder.price.text = "%.2f".format(price)
 
-        MyApplication.loadCategory(categoryId, holder.categoryTv)
-
-        holder.deleteBtn.setOnClickListener{
-            //confirm before delete
-            val builder = AlertDialog.Builder(context)
-            builder.setTitle("Delete")
-                .setMessage("Are you sure u want to delete this foods?")
-                .setPositiveButton("Confirm"){a, d->
-                    Toast.makeText(context,"Deleting...", Toast.LENGTH_SHORT).show()
-                    deleteCategory(model, holder)
-                }
-                .setNegativeButton("cancel"){a, d->
-                    a.dismiss()
-                }
-                .show()
-
-        }
 
     }
     private fun deleteCategory(model: ModelFood, holder: HolderFood) {
@@ -84,20 +65,11 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>, Filte
     }
 
 
-
-    override fun getFilter(): Filter {
-        if (filter ==null){
-            filter = FilterFood(filterList, this)
-        }
-        return filter as FilterFood
-    }
-
     inner class HolderFood(itemView:View): RecyclerView.ViewHolder(itemView){
 
         val foodName = binding.titleEt
         val price = binding.priceEt
         var categoryTv:TextView = binding.categoryTv
-        var deleteBtn:ImageButton = binding.deleteBtn
 
     }
 

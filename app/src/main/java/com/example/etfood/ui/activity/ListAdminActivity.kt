@@ -1,17 +1,15 @@
-package com.example.etfood
+package com.example.etfood.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import com.example.etfood.databinding.ActivityListAdminBinding
+import com.example.etfood.ui.adapter.AdapterFoodAdmin
+import com.example.etfood.ui.model.ModelFood
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
-import java.lang.Exception
 
 class ListAdminActivity : AppCompatActivity() {
 

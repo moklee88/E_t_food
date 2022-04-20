@@ -1,10 +1,9 @@
-package com.example.etfood
+package com.example.etfood.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.etfood.databinding.ActivityMainBinding
-import com.example.etfood.databinding.ActivityMenuBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +17,10 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.loginBtn.setOnClickListener{
-         startActivity(Intent(this,LoginActivity::class.java))
+         startActivity(Intent(this, LoginActivity::class.java))
         }
         binding.SkipBtn.setOnClickListener{
-            startActivity(Intent(this,DashboardUserActivity::class.java))
+            startActivity(Intent(this, DashboardAdminActivity::class.java))
         }
 
       //  binding.btnStart.setOnClickListener{ goMenu()}

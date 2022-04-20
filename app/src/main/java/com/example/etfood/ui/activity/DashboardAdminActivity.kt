@@ -1,19 +1,17 @@
-package com.example.etfood
+package com.example.etfood.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.View
 import com.example.etfood.databinding.ActivityDashboardAdminBinding
-import com.example.etfood.databinding.ActivityLoginBinding
+import com.example.etfood.ui.adapter.AdapterCategory
+import com.example.etfood.ui.model.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
-import java.lang.Exception
 
 class DashboardAdminActivity : AppCompatActivity() {
 
@@ -34,35 +32,13 @@ class DashboardAdminActivity : AppCompatActivity() {
         checkUser()
         loadCategories()
 
-        //search
-        //binding.searchEt.addTextChangedListener(object: TextWatcher{
-        //    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-       //
-       //     }
-
-         //   override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        //        try {
-          //          adapterCategory.filter.filter(s)
-         //       }
-          //      catch (e:Exception){
-         //       }
-        //    }
-
-         //   override fun afterTextChanged(p0: Editable?) {
-         //
-         //   }
-     //   })
-
         binding.logoutBtn.setOnClickListener {
             firebaseAuth.signOut()
             checkUser()
         }
 
-        binding.addCategoryBtn.setOnClickListener {
-            startActivity(Intent(this, CategoryAddActivity::class.java))
-        }
-        binding.addFoodToCategory.setOnClickListener{
-            startActivity(Intent(this, AddFoodActivity::class.java))
+        binding.profileBtn.setOnClickListener {
+            startActivity(Intent(this,profileActivity::class.java))
         }
     }
 
@@ -85,7 +61,7 @@ class DashboardAdminActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
 
 
@@ -95,6 +71,11 @@ class DashboardAdminActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser == null){
+            binding.subTitleTv.text = "Not logged in"
+
+            binding.profileBtn.visibility = View.GONE
+            binding.logoutBtn.visibility = View.GONE
+
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -102,6 +83,9 @@ class DashboardAdminActivity : AppCompatActivity() {
             val email = firebaseUser.email
 
             binding.subTitleTv.text = email
+
+            binding.profileBtn.visibility = View.VISIBLE
+            binding.logoutBtn.visibility = View.VISIBLE
         }
     }
 }

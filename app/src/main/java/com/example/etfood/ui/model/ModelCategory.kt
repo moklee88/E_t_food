@@ -1,4 +1,4 @@
-package com.example.etfood
+package com.example.etfood.ui.model
 
 import java.sql.Timestamp
 
