@@ -1,14 +1,19 @@
 package com.example.etfood.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.etfood.CartFood
 import com.example.etfood.databinding.RowAdminBinding
+import com.example.etfood.ui.activity.ListAdminActivity
 import com.example.etfood.ui.model.ModelFood
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>{
@@ -34,16 +39,40 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>{
     override fun onBindViewHolder(holder: HolderFood, position: Int) {
         val model = foodArrayList[position]
         val id = model.id
-        val categoryId = model.categoryId
+        val categoryTitle = model.categoryTitle
         val title = model.title
         val price = model.price
         val timestamp = model.timestamp
 
+        //TOAST
+        val text = "$title has been added!"
+        val duration = Toast.LENGTH_SHORT
+        val toast = Toast.makeText(context, text, duration)
+
+        //recycleView set Data
         holder.foodName.text = title
         holder.price.text = "%.2f".format(price)
 
+        //Find Collection size
+        var count = 0;
+        Firebase.firestore
+            .collection("cart")
+            .get()
+            .addOnSuccessListener { snap->
+                count = snap.size()
+            }
+        //AddToCart
+        holder.addToCart.setOnClickListener{
+            val addItem = CartFood(id,title,price, "pending", categoryTitle[0].toString())
 
+            Firebase.firestore
+                .collection("cart")
+                .document("I${"%.2f".format(++count)}")
+                .set(addItem)
+                .addOnSuccessListener { toast.show() }
+        }
     }
+    /*
     private fun deleteCategory(model: ModelFood, holder: HolderFood) {
         val id = model.id
 
@@ -58,6 +87,7 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>{
             }
     }
 
+     */
 
 
     override fun getItemCount(): Int {
@@ -69,7 +99,7 @@ class AdapterFoodAdmin :RecyclerView.Adapter<AdapterFoodAdmin.HolderFood>{
 
         val foodName = binding.titleEt
         val price = binding.priceEt
-        var categoryTv:TextView = binding.categoryTv
+        var addToCart:ImageButton = binding.addToCartBtn
 
     }
 

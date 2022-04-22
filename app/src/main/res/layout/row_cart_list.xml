@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/addToCart"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="10dp"
+    app:cardUseCompatPadding="true"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="10dp">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,36 +18,33 @@
         <TextView
             android:id="@+id/titleEt"
             android:layout_width="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Foods name"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/rmTitle"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Foods name"
+            android:text=" RM"
             android:textColor="@color/black"
             android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/categoryTv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/priceEt"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="Price"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <ImageButton
-            android:id="@+id/addToCartBtn"
-            android:layout_width="5dp"
             android:layout_height="wrap_content"
+            android:text="Price"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_add_white" />
+            android:textColor="@color/black"/>
+
 
 
     </LinearLayout>
