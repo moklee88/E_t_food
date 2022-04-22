@@ -14,4 +14,11 @@
     <string name="menu_Menu">Menu</string>
     <string name="Start_text">Start</string>
     <string name="new_user_signup">New User?<b>SignUp</b></string>
+    <string name="text_mainMenu">Main Menu</string>
+    <string name="text_order">Order</string>
+    <string name="text_cart">Cart</string>
+    <string name="text_history">History</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_placeOrder">Place Order</string>
+    <string name="text_total">Total</string>
 </resources>

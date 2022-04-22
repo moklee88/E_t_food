@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
          startActivity(Intent(this, LoginActivity::class.java))
         }
         binding.SkipBtn.setOnClickListener{
-            startActivity(Intent(this, DashboardAdminActivity::class.java))
+            startActivity(Intent(this, MenuActivity::class.java))
         }
 
       //  binding.btnStart.setOnClickListener{ goMenu()}

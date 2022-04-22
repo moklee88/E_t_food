@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/food"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-
+        <activity
+            android:name=".ui.activity.MenuActivity"
+            android:exported="false" />
         <activity
             android:name=".CartActivity"
             android:exported="false" />

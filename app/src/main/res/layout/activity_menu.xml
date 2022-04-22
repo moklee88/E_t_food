@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    tools:context=".ui.activity.MenuActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -29,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Please Login"
+            android:text="@string/text_mainMenu"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -54,37 +55,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/shape_button01"
-                android:text="Order"
+                android:text="@string/text_order"
                 android:textColor="@color/white" />
 
             <Button
-                android:id="@+id/cardBtn"
+                android:id="@+id/cartBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_below="@id/orderBtn"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_button01"
-                android:text="Card"
+                android:text="@string/text_cart"
                 android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/historyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cartBtn"
                 android:layout_marginTop="5dp"
-                android:layout_below="@id/cardBtn"
                 android:background="@drawable/shape_button01"
-                android:text="History"
+                android:text="@string/text_history"
                 android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/profileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_below="@id/historyBtn"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_button01"
-                android:text="Profile"
+                android:text="@string/text_profile"
                 android:textColor="@color/white" />
 
 
@@ -92,6 +93,4 @@
 
 
     </ScrollView>
-
-    </RelativeLayout>
 </RelativeLayout>

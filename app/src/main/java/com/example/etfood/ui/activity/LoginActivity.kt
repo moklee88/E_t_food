@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         progressDialog =  ProgressDialog(this)
-        progressDialog.setTitle("PLease wait")
+        progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.noAccountTv.setOnClickListener {
@@ -60,12 +60,12 @@ class LoginActivity : AppCompatActivity() {
            Toast.makeText(this,"Enter Password...", Toast.LENGTH_SHORT).show()
         }
         else{
-            loginuser()
+            loginUser()
         }
 
     }
 
-    private fun loginuser() {
+    private fun loginUser() {
         progressDialog.setMessage("Logging In...")
         progressDialog.show()
 
@@ -92,11 +92,11 @@ class LoginActivity : AppCompatActivity() {
 
                     val userType = snapshot.child("userType").value
                     if(userType == "user"){
-                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
                         finish()
                     }
                     else if (userType == "admin"){
-                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
                         finish()
                     }
                 }

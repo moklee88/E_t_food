@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase
         firebaseAuth = FirebaseAuth.getInstance()
 
         progressDialog =  ProgressDialog(this)
-        progressDialog.setTitle("PLease wait")
+        progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.backBtn.setOnClickListener{
@@ -107,7 +107,7 @@ import com.google.firebase.database.FirebaseDatabase
              .addOnSuccessListener {
               progressDialog.dismiss()
                  Toast.makeText(this,"Account created", Toast.LENGTH_SHORT).show()
-                 startActivity(Intent(this@RegisterActivity, DashboardAdminActivity::class.java))
+                 startActivity(Intent(this@RegisterActivity, MenuActivity::class.java))
                  finish()
              }
              .addOnFailureListener{ e->
